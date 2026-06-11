@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  {
+    name: 'Vehicle Wraps',
+    desc: 'Full and partial vehicle wraps that turn your fleet into moving billboards. We handle design, print, and installation on cars, vans, trucks, and trailers.',
+    details: ['Full wraps', 'Partial wraps', 'Fleet graphics', 'Decals & lettering'],
+    image: '/projects/vehicle-wraps.jpg',
+  },
+  {
+    name: 'Banners & Signs',
+    desc: 'Large-format banners, yard signs, retractable pop-up banners, outdoor signs, billboards, and everything in between.',
+    details: ['Pop-up banners', 'Mesh banners', 'Yard signs', 'Billboards'],
+    image: '/projects/signage.jpg',
+  },
+  {
+    name: 'Point of Purchase Displays',
+    desc: 'Retail displays engineered to increase conversions at the moment of decision — countertop units, floor displays, sidekick fixtures, and more.',
+    details: ['Floor displays', 'Countertop units', 'Sidekick fixtures', 'Shelf talkers'],
+    image: '/projects/pos-display.jpg',
+  },
+  {
+    name: 'Folding Cartons',
+    desc: 'Custom packaging boxes that protect your product and communicate your brand. We handle structural design, prototyping, and production.',
+    details: ['Retail boxes', 'Shipping cartons', 'Custom shapes', 'Structural prototypes'],
+    image: '/projects/packaging-boxes.jpg',
+  },
+  {
+    name: 'Marketing Kits',
+    desc: 'Complete branded kits that combine print materials, promotional products, and packaging into a cohesive marketing package.',
+    details: ['Sales kits', 'Trade show kits', 'Welcome packages', 'Branded giveaways'],
+    image: '/projects/merchandise.jpg',
+  },
+  {
+    name: 'Protective Packaging',
+    desc: 'Foam inserts, corrugated packaging, and specialty solutions for fragile, high-value, or oddly shaped products.',
+    details: ['Foam inserts', 'Corrugated packaging', 'Custom foam cutting', 'Eco-friendly options'],
+    image: '/projects/foam-inserts.jpg',
+  },
+  {
+    name: 'Wall Murals & Window Graphics',
+    desc: 'Transform any surface with custom wall murals, perforated window film, floor graphics, and environmental branding.',
+    details: ['Wall murals', 'Perforated window film', 'Floor graphics', 'Environmental branding'],
+    image: '/projects/displays-p66.jpg',
+  },
+  {
+    name: 'Canvas & PVC Printing',
+    desc: 'High-resolution printing on canvas, PVC banners, sintra board, and other specialty substrates for any application.',
+    details: ['Canvas prints', 'PVC banners', 'Sintra board', 'Foam board printing'],
+    image: '/projects/brochure-prints.jpg',
+  },
+];
+---
+
+<Layout title="Products & Services" description="Alexander Display & Packaging — Vehicle wraps, banners, POP displays, folding cartons, marketing kits, and more in Houston, TX.">
+
+  <!-- Hero -->
+  <section class="pt-16 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
+    <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(180,255,60,0.15) 0%, transparent 65%);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px); background-size: 44px 44px;"></div>
+    <svg class="absolute -bottom-8 -right-8 w-72 h-72 opacity-[0.08] pointer-events-none" viewBox="0 0 300 300" fill="none">
+      <circle cx="300" cy="300" r="230" stroke="white" stroke-width="36"/>
+      <circle cx="300" cy="300" r="155" stroke="white" stroke-width="24"/>
+      <circle cx="300" cy="300" r="78" stroke="white" stroke-width="14"/>
+    </svg>
+    <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+      <p class="text-sm font-bold uppercase tracking-widest text-white/70 mb-5">Products & Services</p>
+      <h1 class="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+        Everything Under One Roof
+      </h1>
+      <p class="text-white/80 text-xl max-w-3xl leading-relaxed mb-8">
+        Eight product categories. Four core services. One partner for all your marketing needs.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand font-bold rounded-md hover:bg-brand-light transition-colors text-sm uppercase tracking-wide">
+        Get a Free Quote
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Products header -->
+  <div class="py-16 px-6 bg-white border-b border-neutral-100">
+    <div data-reveal class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-widest text-brand mb-3">Products</p>
+        <h2 class="text-4xl font-black text-neutral-900">What We Make</h2>
+      </div>
+      <a href="/contact" class="shrink-0 inline-flex items-center gap-2 text-sm font-bold text-brand hover:text-brand-dark transition-colors">
+        Request a custom quote
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Products — alternating zigzag, each row slides in from the edge -->
+  {products.map(({ name, desc, details, image }, i) => {
+    const isEven = i % 2 === 0;
+    return (
+      <section class="overflow-hidden border-b border-neutral-100">
+        <div class={`grid md:grid-cols-2 min-h-[420px]`}>
+
+          <!-- Text block (always static) -->
+          <div class={`flex items-center px-10 lg:px-20 py-14 bg-white ${!isEven ? 'md:order-2' : ''}`} data-reveal>
+            <div class="max-w-md">
+              <span class="text-xs font-black text-brand/40 tracking-widest block mb-4">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-2xl font-black text-neutral-900 mb-4">{name}</h3>
+              <p class="text-neutral-500 text-sm leading-relaxed mb-6">{desc}</p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                {details.map(d => (
+                  <span class="px-3 py-1 bg-brand-light text-brand-darker text-xs font-semibold rounded-full">{d}</span>
+                ))}
+              </div>
+              <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-brand hover:text-brand-dark transition-colors">
+                Get a quote
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Visual block — slides in from outside the page edge -->
+          <div
+            class={`relative min-h-[280px] md:min-h-0 ${!isEven ? 'md:order-1' : ''}`}
+            data-slide-left={!isEven ? '' : undefined}
+            data-slide-right={isEven ? '' : undefined}
+          >
+            <img
+              src={image}
+              alt={name}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <!-- subtle dark gradient at bottom for depth -->
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%);"></div>
+          </div>
+
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- Services -->
+  <section class="py-24 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 44px 44px;"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div data-reveal class="mb-14">
+        <p class="text-sm font-bold uppercase tracking-widest text-white/60 mb-3">Services</p>
+        <h2 class="text-4xl font-black text-white mb-4">How We Help</h2>
+        <p class="text-white/70 max-w-lg text-lg">Beyond manufacturing, we offer creative and logistical services that complete the picture.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+
+          <div data-reveal class="bg-white/10 backdrop-blur-sm rounded-2xl p-7 border border-white/20 hover:bg-white/15 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+              <svg width="20" height="20" fill="none" stroke="white" stroke-width="1.75" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3 class="font-black text-white mb-2">Graphic Design</h3>
+            <p class="text-white/65 text-sm leading-relaxed">Our design team creates logos, layouts, and materials that capture your brand and print beautifully.</p>
+          </div>
+
+          <div data-reveal class="bg-white/10 backdrop-blur-sm rounded-2xl p-7 border border-white/20 hover:bg-white/15 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+              <svg width="20" height="20" fill="none" stroke="white" stroke-width="1.75" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3 class="font-black text-white mb-2">3D Rendering</h3>
+            <p class="text-white/65 text-sm leading-relaxed">See exactly how your display, packaging, or signage will look before production starts — no surprises.</p>
+          </div>
+
+          <div data-reveal class="bg-white/10 backdrop-blur-sm rounded-2xl p-7 border border-white/20 hover:bg-white/15 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+              <svg width="20" height="20" fill="none" stroke="white" stroke-width="1.75" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 class="font-black text-white mb-2">Fulfillment Services</h3>
+            <p class="text-white/65 text-sm leading-relaxed">We store, kit, and ship your marketing materials so you can focus on running your business.</p>
+          </div>
+
+          <div data-reveal class="bg-white/10 backdrop-blur-sm rounded-2xl p-7 border border-white/20 hover:bg-white/15 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+              <svg width="20" height="20" fill="none" stroke="white" stroke-width="1.75" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 class="font-black text-white mb-2">Assembly Instructions</h3>
+            <p class="text-white/65 text-sm leading-relaxed">Clear, branded guides for complex display systems or packaging that requires end-user setup.</p>
+          </div>
+
+        </div>
+    </div>
+  </section>
+
+  <!-- Also We Do -->
+  <section class="py-24 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #ffffff 0%, #f2fae0 55%, #e6f7c0 100%);">
+    <div class="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(123,189,0,0.10) 0%, transparent 68%);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(123,189,0,0.18) 1px, transparent 1px); background-size: 26px 26px; opacity: 0.35;"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div data-reveal class="text-center mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-brand mb-3">And More</p>
+        <h2 class="text-4xl font-black text-neutral-900">We Also Do</h2>
+        <p class="text-neutral-500 mt-4 max-w-lg mx-auto">
+          If you need it branded, printed, or packaged — there's a good chance we can do it.
+        </p>
+      </div>
+      <div data-reveal style="--i:1" class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+        {['Logos', 'Brochures', 'T-Shirts', 'Business Cards', 'Product Labels', 'Stickers', 'Hats', 'Uniforms', 'Promotional Decals', 'Company Swag', 'Tradeshow Goods', 'Hand Signs', 'Party Favors'].map(item => (
+          <span class="px-4 py-2 bg-white text-neutral-700 text-sm font-semibold rounded-full border border-brand/20 shadow-sm hover:border-brand hover:text-brand transition-colors cursor-default">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-white">
+    <div data-reveal class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-black text-neutral-900 mb-5">Don't See What You Need?</h2>
+      <p class="text-neutral-500 mb-10 text-lg">
+        Give us a call or send a message. If it can be branded, printed, or packaged, we can help.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 bg-brand text-white font-bold rounded-md hover:bg-brand-dark transition-colors text-sm uppercase tracking-wide">
+          Request a Quote
+        </a>
+        <a href="tel:2816868602" class="px-8 py-4 border-2 border-neutral-200 text-neutral-700 font-bold rounded-md hover:border-brand hover:text-brand transition-colors text-sm uppercase tracking-wide">
+          (281) 686-8602
+        </a>
+      </div>
+    </div>
+  </section>
+
+<style>
+  /* Generic fade-up reveal */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Slide in from page edge — matches reference site exactly */
+  [data-slide-right],
+  [data-slide-left] {
+    will-change: transform;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-slide-left]  { transform: translate(-100%); }
+  [data-slide-right] { transform: translate(100%); }
+  [data-slide-left].is-revealed,
+  [data-slide-right].is-revealed { transform: translate(0); }
+</style>
+
+<script>
+  // Generic fade-up
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-revealed'); revealObs.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach((el) => revealObs.observe(el));
+
+  // Slide in from left / right edge
+  const slideObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-revealed'); slideObs.unobserve(e.target); }
+    });
+  }, { rootMargin: '-5% 0px' });
+  document.querySelectorAll('[data-slide-left], [data-slide-right]').forEach((el) => slideObs.observe(el));
+</script>
+</Layout>

@@ -1,88 +1,168 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const packages = [
+  {
+    type: 'New Business',
+    items: ['Business cards', 'Brochures', 'Website setup', 'Signage'],
+  },
+  {
+    type: 'Existing Business',
+    items: ['Promotional products', 'Marketing kits', 'Vehicle wraps'],
+  },
+  {
+    type: 'Restaurants',
+    items: ['Fliers', 'Indoor & outdoor signs', 'Light boxes'],
+  },
+  {
+    type: 'Retail',
+    items: ['Point-of-purchase displays', 'Marketing kits', 'Folding cartons'],
+  },
+];
 ---
 
-<Layout title="About" description="Learn about Alexander Display — our history, values, and the team behind your projects.">
+<Layout title="About" description="Alexander Display & Packaging — Founded in Houston, TX in 2007. An industry leader in marketing and display solutions.">
+
   <!-- Hero -->
-  <section class="pt-32 pb-16 px-6 bg-neutral-50">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-sm font-medium uppercase tracking-widest text-neutral-500 mb-4">About Us</p>
-      <h1 class="text-5xl md:text-6xl font-bold text-neutral-900 leading-tight max-w-3xl">
-        A legacy of craftsmanship in display
+  <section class="pt-16 bg-brand">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="text-sm font-bold uppercase tracking-widest text-white/70 mb-5">About Us</p>
+      <h1 class="text-5xl md:text-6xl font-black text-white leading-tight max-w-3xl mb-6">
+        An Industry Leader Since 2007
       </h1>
+      <p class="text-white/80 text-xl max-w-2xl leading-relaxed">
+        Built on commitment to service, quality, and a customer-first philosophy — we've grown from a local Houston shop to a full-service marketing powerhouse.
+      </p>
     </div>
   </section>
 
   <!-- Story -->
-  <section class="py-24 px-6">
+  <section class="py-24 px-6 bg-white">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
       <div>
-        <h2 class="text-3xl font-bold text-neutral-900 mb-6">Our Story</h2>
+        <p class="text-sm font-bold uppercase tracking-widest text-brand mb-4">Our Story</p>
+        <h2 class="text-3xl font-black text-neutral-900 mb-6">From Houston to Everywhere You Need to Be</h2>
         <div class="space-y-4 text-neutral-600 leading-relaxed">
           <p>
-            Alexander Display was founded on the belief that great physical presence matters. In a world increasingly saturated with digital noise, the right display can cut through the clutter and create a genuine moment of connection between a brand and its audience.
+            Founded in 2007, Alexander Display & Packaging was built on a simple belief: businesses shouldn't have to juggle multiple vendors to get their marketing done. We set out to be the single partner that handles everything — from concept and design to production and fulfillment.
           </p>
           <p>
-            For over two decades, we've partnered with retailers, exhibitors, and businesses of every size — from independent boutiques to national chains — to develop display solutions that are both beautifully designed and built to last.
+            Over the years, we've grown into an industry leader with a diverse range of products and services. Our commitment to service and our customer-focused philosophy have earned us long-term partnerships with businesses of all sizes — from startups to established brands.
           </p>
           <p>
-            We operate our own production facility, which means we control quality at every step: from design and material selection through fabrication and finishing.
+            Based in Houston, TX, we serve clients across the country with fast turnaround times, competitive pricing, and quality that speaks for itself.
           </p>
         </div>
       </div>
-      <div class="space-y-8">
-        <div class="p-8 bg-neutral-50 rounded-lg">
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Our Mission</h3>
-          <p class="text-neutral-600 text-sm leading-relaxed">
-            To create display experiences that amplify our clients' brands — with precision, craft, and an obsessive attention to detail.
+      <div class="space-y-5">
+        <div class="bg-brand-light rounded-xl p-8 border border-brand/20">
+          <p class="text-sm font-bold uppercase tracking-widest text-brand mb-3">Our Mission</p>
+          <p class="text-neutral-700 leading-relaxed">
+            To be the complete one stop solution for our clients' marketing needs — providing both the strategy and the materials to help every business grow.
           </p>
         </div>
-        <div class="p-8 bg-neutral-50 rounded-lg">
-          <h3 class="text-lg font-semibold text-neutral-900 mb-2">Our Values</h3>
-          <ul class="text-neutral-600 text-sm leading-relaxed space-y-2">
-            <li>Craftsmanship over shortcuts</li>
-            <li>Transparent communication at every stage</li>
-            <li>Sustainable materials where possible</li>
-            <li>Solutions built to the brief, not sold off the shelf</li>
+        <div class="bg-neutral-900 rounded-xl p-8">
+          <p class="text-sm font-bold uppercase tracking-widest text-brand mb-4">Our Approach</p>
+          <ul class="space-y-3 text-sm text-neutral-300">
+            {[
+              'We don\'t just consult — we deliver the materials',
+              'Customized packages for every type of business',
+              'Fast turnaround, no shortcuts on quality',
+              'Long-term partnerships, not one-off transactions',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-4 h-4 rounded-full bg-brand shrink-0 flex items-center justify-center">
+                  <svg width="8" height="8" fill="white" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="py-24 px-6 bg-neutral-50">
+  <!-- Package solutions -->
+  <section class="py-24 px-6 bg-brand-light">
     <div class="max-w-6xl mx-auto">
-      <div class="mb-14">
-        <p class="text-sm font-medium uppercase tracking-widest text-neutral-500 mb-3">The Team</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900">The people behind your project</h2>
+      <div class="text-center mb-14">
+        <p class="text-sm font-bold uppercase tracking-widest text-brand mb-3">Tailored For You</p>
+        <h2 class="text-4xl font-black text-neutral-900">Marketing Packages for Every Business</h2>
+        <p class="text-neutral-500 mt-4 max-w-xl mx-auto">
+          We build custom marketing packages that combine consulting with the physical materials you need to reach your goal.
+        </p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {[
-          { name: 'James Alexander', role: 'Founder & Creative Director' },
-          { name: 'Maria Chen', role: 'Head of Production' },
-          { name: 'Derek Ross', role: 'Lead Designer' },
-        ].map(({ name, role }) => (
-          <div class="bg-white p-8 rounded-lg border border-neutral-200">
-            <div class="w-14 h-14 bg-neutral-200 rounded-full mb-5" />
-            <p class="font-semibold text-neutral-900">{name}</p>
-            <p class="text-sm text-neutral-500 mt-1">{role}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {packages.map(({ type, items }) => (
+          <div class="bg-white rounded-xl p-7 shadow-sm border border-brand/10">
+            <div class="w-8 h-1 bg-brand rounded-full mb-4"></div>
+            <h3 class="font-black text-neutral-900 mb-4">{type}</h3>
+            <ul class="space-y-2">
+              {items.map(item => (
+                <li class="text-sm text-neutral-500 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-24 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-neutral-900 mb-5">Let's work together</h2>
-      <p class="text-neutral-600 mb-10 max-w-lg mx-auto">
-        We'd love to hear about your next project. Reach out and we'll get back to you within one business day.
-      </p>
-      <a href="/contact" class="px-8 py-4 bg-neutral-900 text-white rounded-md font-medium hover:bg-neutral-700 transition-colors">
-        Get in Touch
-      </a>
+  <!-- Materials -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-brand mb-4">Materials & Capabilities</p>
+          <h2 class="text-3xl font-black text-neutral-900 mb-6">Built with the Right Materials</h2>
+          <p class="text-neutral-600 leading-relaxed mb-6">
+            We work with a wide range of substrates and materials to ensure every product performs as well as it looks — whether it's going in a retail store, on a trade show floor, or wrapping a vehicle.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {['Corrugated Board', 'Chipboard', 'Foamcore', 'Sintra PVC', 'Acrylic', 'Wood', 'Metal', 'Specialty Foam'].map(m => (
+              <span class="px-3 py-1.5 bg-brand-light text-brand-darker text-xs font-bold rounded-full border border-brand/20">
+                {m}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { label: 'Printing Services', desc: 'Business cards, brochures, banners, canvas, murals, window graphics, and more.' },
+            { label: 'Creative Services', desc: '3D rendering, graphic design, structural prototyping, and assembly instructions.' },
+            { label: 'Display Products', desc: 'Vehicle wraps, POP displays, folding cartons, marketing kits, and packaging.' },
+            { label: 'Fulfillment', desc: 'Storage, kitting, and distribution handled by our team so you can focus on selling.' },
+          ].map(({ label, desc }) => (
+            <div class="bg-neutral-50 rounded-xl p-5 border border-neutral-200">
+              <p class="font-bold text-neutral-900 text-sm mb-2">{label}</p>
+              <p class="text-neutral-500 text-xs leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-brand">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-5">Let's Build Something Together</h2>
+      <p class="text-white/80 mb-8 text-lg">
+        We build long-term partnerships with our customers. Reach out and let's start yours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 bg-white text-brand font-bold rounded-md hover:bg-brand-light transition-colors text-sm uppercase tracking-wide">
+          Contact Us
+        </a>
+        <a href="tel:2816868602" class="px-8 py-4 border-2 border-white/50 text-white font-bold rounded-md hover:border-white transition-colors text-sm uppercase tracking-wide">
+          (281) 686-8602
+        </a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
