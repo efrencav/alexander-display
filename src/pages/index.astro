@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import InstagramCarousel from '../components/InstagramCarousel.astro';
 
 const products = [
-  { name: 'Vehicle Wraps', icon: '🚗', desc: 'Full and partial wraps that turn your fleet into moving billboards.' },
-  { name: 'Banners & Signs', icon: '🪧', desc: 'Indoor and outdoor banners, yard signs, and large-format prints.' },
-  { name: 'Point of Purchase Displays', icon: '🏪', desc: 'Retail displays engineered to increase sales at the moment of decision.' },
-  { name: 'Folding Cartons', icon: '📦', desc: 'Custom packaging that protects your product and elevates your brand.' },
-  { name: 'Marketing Kits', icon: '🎯', desc: 'Complete, branded kits combining print and promotional materials.' },
-  { name: 'Protective Packaging', icon: '🛡️', desc: 'Foam, corrugated, and specialty packaging for fragile or high-value products.' },
-  { name: 'Wall Murals & Window Graphics', icon: '🖼️', desc: 'Transform your space with custom wall graphics and perforated window film.' },
-  { name: 'Canvas & PVC Printing', icon: '🎨', desc: 'High-resolution canvas prints and PVC banners for any environment.' },
+  { name: 'Vehicle Wraps',               icon: '🚗', href: '/products#vehicle-wraps',       desc: 'Full and partial wraps that turn your fleet into moving billboards.' },
+  { name: 'Banners & Signs',             icon: '🪧', href: '/products#banners-signs',        desc: 'Indoor and outdoor banners, yard signs, and large-format prints.' },
+  { name: 'Point of Purchase Displays',  icon: '🏪', href: '/products#pop-displays',         desc: 'Retail displays engineered to increase sales at the moment of decision.' },
+  { name: 'Folding Cartons',             icon: '📦', href: '/products#folding-cartons',      desc: 'Custom packaging that protects your product and elevates your brand.' },
+  { name: 'Marketing Kits',              icon: '🎯', href: '/products#marketing-kits',       desc: 'Complete, branded kits combining print and promotional materials.' },
+  { name: 'Protective Packaging',        icon: '🛡️', href: '/products#protective-packaging', desc: 'Foam, corrugated, and specialty packaging for fragile or high-value products.' },
+  { name: 'Wall Murals & Window Graphics', icon: '🖼️', href: '/products#wall-murals',       desc: 'Transform your space with custom wall graphics and perforated window film.' },
+  { name: 'Canvas & PVC Printing',       icon: '🎨', href: '/products#canvas-pvc',           desc: 'High-resolution canvas prints and PVC banners for any environment.' },
 ];
 ---
 
@@ -66,7 +66,9 @@ const products = [
         <div class="bg-white rounded-2xl shadow-2xl p-7 lg:p-8">
           <p class="text-xs font-bold uppercase tracking-widest text-brand mb-1">Free Quote</p>
           <h2 class="text-xl font-black text-neutral-900 mb-6">Tell us about your project</h2>
-          <form name="hero-quote" method="POST" class="space-y-4">
+          <form name="hero-quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" class="space-y-4">
+            <input type="hidden" name="form-name" value="hero-quote" />
+            <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label for="hero-first" class="block text-xs font-semibold text-neutral-600 mb-1.5">First Name</label>
@@ -135,8 +137,8 @@ const products = [
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {products.map(({ name, icon, desc }) => (
-          <a href="/products" class="group p-6 border border-neutral-200 rounded-xl hover:border-brand hover:shadow-lg transition-all">
+        {products.map(({ name, icon, desc, href }) => (
+          <a href={href} class="group p-6 border border-neutral-200 rounded-xl hover:border-brand hover:shadow-lg transition-all">
             <div class="text-3xl mb-3">{icon}</div>
             <h3 class="font-bold text-neutral-900 mb-2 group-hover:text-brand transition-colors">{name}</h3>
             <p class="text-neutral-500 text-sm leading-relaxed">{desc}</p>

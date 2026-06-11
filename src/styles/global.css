@@ -7,3 +7,8 @@
   --color-brand-light: #f2fae0;
   --color-brand-mid: #d4f090;
 }
+
+/* Offset anchor targets so the sticky nav doesn't cover the section */
+[id] {
+  scroll-margin-top: 90px;
+}

@@ -4,48 +4,56 @@ import Layout from '../layouts/Layout.astro';
 const products = [
   {
     name: 'Vehicle Wraps',
+    slug: 'vehicle-wraps',
     desc: 'Full and partial vehicle wraps that turn your fleet into moving billboards. We handle design, print, and installation on cars, vans, trucks, and trailers.',
     details: ['Full wraps', 'Partial wraps', 'Fleet graphics', 'Decals & lettering'],
     image: '/projects/vehicle-wraps.jpg',
   },
   {
     name: 'Banners & Signs',
+    slug: 'banners-signs',
     desc: 'Large-format banners, yard signs, retractable pop-up banners, outdoor signs, billboards, and everything in between.',
     details: ['Pop-up banners', 'Mesh banners', 'Yard signs', 'Billboards'],
     image: '/projects/signage.jpg',
   },
   {
     name: 'Point of Purchase Displays',
+    slug: 'pop-displays',
     desc: 'Retail displays engineered to increase conversions at the moment of decision — countertop units, floor displays, sidekick fixtures, and more.',
     details: ['Floor displays', 'Countertop units', 'Sidekick fixtures', 'Shelf talkers'],
     image: '/projects/pos-display.jpg',
   },
   {
     name: 'Folding Cartons',
+    slug: 'folding-cartons',
     desc: 'Custom packaging boxes that protect your product and communicate your brand. We handle structural design, prototyping, and production.',
     details: ['Retail boxes', 'Shipping cartons', 'Custom shapes', 'Structural prototypes'],
     image: '/projects/packaging-boxes.jpg',
   },
   {
     name: 'Marketing Kits',
+    slug: 'marketing-kits',
     desc: 'Complete branded kits that combine print materials, promotional products, and packaging into a cohesive marketing package.',
     details: ['Sales kits', 'Trade show kits', 'Welcome packages', 'Branded giveaways'],
     image: '/projects/merchandise.jpg',
   },
   {
     name: 'Protective Packaging',
+    slug: 'protective-packaging',
     desc: 'Foam inserts, corrugated packaging, and specialty solutions for fragile, high-value, or oddly shaped products.',
     details: ['Foam inserts', 'Corrugated packaging', 'Custom foam cutting', 'Eco-friendly options'],
     image: '/projects/foam-inserts.jpg',
   },
   {
     name: 'Wall Murals & Window Graphics',
+    slug: 'wall-murals',
     desc: 'Transform any surface with custom wall murals, perforated window film, floor graphics, and environmental branding.',
     details: ['Wall murals', 'Perforated window film', 'Floor graphics', 'Environmental branding'],
     image: '/projects/displays-p66.jpg',
   },
   {
     name: 'Canvas & PVC Printing',
+    slug: 'canvas-pvc',
     desc: 'High-resolution printing on canvas, PVC banners, sintra board, and other specialty substrates for any application.',
     details: ['Canvas prints', 'PVC banners', 'Sintra board', 'Foam board printing'],
     image: '/projects/brochure-prints.jpg',
@@ -94,10 +102,10 @@ const products = [
   </div>
 
   <!-- Products — alternating zigzag, each row slides in from the edge -->
-  {products.map(({ name, desc, details, image }, i) => {
+  {products.map(({ name, slug, desc, details, image }, i) => {
     const isEven = i % 2 === 0;
     return (
-      <section class="overflow-hidden border-b border-neutral-100">
+      <section id={slug} class="overflow-hidden border-b border-neutral-100">
         <div class={`grid md:grid-cols-2 min-h-[420px]`}>
 
           <!-- Text block (always static) -->
@@ -139,7 +147,7 @@ const products = [
   })}
 
   <!-- Services -->
-  <section class="py-24 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
+  <section id="services" class="py-24 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 44px 44px;"></div>
     <div class="max-w-6xl mx-auto relative z-10">
       <div data-reveal class="mb-14">

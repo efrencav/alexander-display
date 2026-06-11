@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Thank You" description="We received your message and will be in touch shortly.">
+
+  <section class="pt-16 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
+    <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(180,255,60,0.15) 0%, transparent 65%);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px); background-size: 44px 44px;"></div>
+    <svg class="absolute -bottom-8 -right-8 w-72 h-72 opacity-[0.08] pointer-events-none" viewBox="0 0 300 300" fill="none">
+      <circle cx="300" cy="300" r="230" stroke="white" stroke-width="36"/>
+      <circle cx="300" cy="300" r="155" stroke="white" stroke-width="24"/>
+      <circle cx="300" cy="300" r="78" stroke="white" stroke-width="14"/>
+    </svg>
+    <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+      <p class="text-sm font-bold uppercase tracking-widest text-white/70 mb-5">Message Received</p>
+      <h1 class="text-5xl md:text-6xl font-black text-white leading-tight max-w-3xl mb-6">
+        Thank You!
+      </h1>
+      <p class="text-white/80 text-xl max-w-xl leading-relaxed">
+        We'll be in touch shortly to discuss your project.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="w-16 h-16 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-8">
+        <svg width="28" height="28" fill="none" stroke="#7BBD00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-black text-neutral-900 mb-4">We got your message</h2>
+      <p class="text-neutral-500 leading-relaxed mb-10">
+        Someone from our team will follow up with you within one business day. In the meantime, feel free to call us directly at <a href="tel:2816868602" class="text-brand font-semibold hover:underline">(281) 686-8602</a>.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="px-8 py-4 bg-brand text-white font-bold rounded-md hover:bg-brand-dark transition-colors text-sm uppercase tracking-wide">
+          Back to Home
+        </a>
+        <a href="/products" class="px-8 py-4 border-2 border-neutral-200 text-neutral-700 font-bold rounded-md hover:border-brand hover:text-brand transition-colors text-sm uppercase tracking-wide">
+          View Our Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
