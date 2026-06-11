@@ -59,9 +59,32 @@ const products = [
     image: '/projects/brochure-prints.jpg',
   },
 ];
+
+const serviceListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Products & Services — Alexander Display & Packaging',
+  description: 'Full list of marketing products and services offered by Alexander Display & Packaging in Houston, TX.',
+  itemListElement: products.map(({ name, slug, desc }, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Service',
+      '@id': `https://alexanderdisplay.com/products#${slug}`,
+      name,
+      description: desc,
+      provider: { '@id': 'https://alexanderdisplay.com/#business' },
+      areaServed: { '@type': 'City', name: 'Houston', addressRegion: 'TX' },
+    },
+  })),
+};
 ---
 
-<Layout title="Products & Services" description="Alexander Display & Packaging — Vehicle wraps, banners, POP displays, folding cartons, marketing kits, and more in Houston, TX.">
+<Layout
+  title="Products & Services | Vehicle Wraps, Banners, Displays & Packaging"
+  description="Vehicle wraps, banners, signs, point-of-purchase displays, folding cartons, marketing kits, wall murals, and more — all in Houston, TX. Alexander Display & Packaging."
+  schema={serviceListSchema}
+>
 
   <!-- Hero -->
   <section class="pt-16 relative overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">

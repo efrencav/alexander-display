@@ -2,6 +2,53 @@
 import Layout from '../layouts/Layout.astro';
 import InstagramCarousel from '../components/InstagramCarousel.astro';
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What products and services does Alexander Display & Packaging offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Alexander Display & Packaging offers vehicle wraps, banners and signs, point-of-purchase displays, folding cartons, marketing kits, protective packaging, wall murals, window graphics, canvas and PVC printing, graphic design, 3D rendering, and fulfillment services.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Alexander Display & Packaging located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Alexander Display & Packaging is located at 5902 Sovereign Dr., Unit A, Suite A05, Houston, TX 77036. We serve businesses throughout Houston and the greater Texas area.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long has Alexander Display & Packaging been in business?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Alexander Display & Packaging was founded in Houston, TX in 2007. We have over 17 years of experience providing marketing products and packaging solutions.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer vehicle wraps in Houston, TX?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Alexander Display & Packaging provides full vehicle wraps, partial wraps, fleet graphics, and decals in Houston, TX. We handle design, print, and installation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I get a free quote from Alexander Display & Packaging?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. You can request a free quote online at alexanderdisplay.com or by calling (281) 686-8602. We respond within one business day.',
+      },
+    },
+  ],
+};
+
 const products = [
   { name: 'Vehicle Wraps',               icon: '🚗', href: '/products#vehicle-wraps',       desc: 'Full and partial wraps that turn your fleet into moving billboards.' },
   { name: 'Banners & Signs',             icon: '🪧', href: '/products#banners-signs',        desc: 'Indoor and outdoor banners, yard signs, and large-format prints.' },
@@ -14,7 +61,11 @@ const products = [
 ];
 ---
 
-<Layout title="Home" description="Alexander Display & Packaging — The complete one stop solution for your marketing needs. Houston, TX.">
+<Layout
+  title="Home"
+  description="Alexander Display & Packaging — Houston's one-stop shop for vehicle wraps, banners, POP displays, custom packaging, and marketing materials since 2007."
+  schema={faqSchema}
+>
 
   <!-- Hero -->
   <section class="pt-16 min-h-[90vh] flex items-center relative overflow-hidden">

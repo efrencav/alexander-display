@@ -6,9 +6,72 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  image?: string;        // absolute URL to OG image (1200×630)
+  canonical?: string;    // override canonical if needed
+  schema?: object | object[]; // page-specific JSON-LD (merged with base)
+  noindex?: boolean;
 }
 
-const { title, description = 'Alexander Display — Custom displays and visual solutions for businesses.' } = Astro.props;
+const SITE = 'https://alexanderdisplay.com';
+
+const {
+  title,
+  description = 'Alexander Display & Packaging — The complete one-stop marketing solution in Houston, TX. Vehicle wraps, banners, POP displays, packaging, and more since 2007.',
+  image = `${SITE}/og-image.jpg`,
+  canonical = `${SITE}${Astro.url.pathname}`,
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title === 'Home'
+  ? 'Alexander Display & Packaging | Houston, TX Marketing Products'
+  : `${title} | Alexander Display & Packaging — Houston, TX`;
+
+// Base LocalBusiness schema — present on every page
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
+  '@id': `${SITE}/#business`,
+  name: 'Alexander Display & Packaging',
+  description: 'The complete one-stop marketing solution for businesses in Houston, TX. Vehicle wraps, banners, signage, point-of-purchase displays, folding cartons, marketing kits, protective packaging, and more since 2007.',
+  url: SITE,
+  telephone: '+12816868602',
+  faxNumber: '+12815588777',
+  foundingDate: '2007',
+  logo: `${SITE}/logo.svg`,
+  image: `${SITE}/og-image.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '5902 Sovereign Dr., Unit A, Suite A05',
+    addressLocality: 'Houston',
+    addressRegion: 'TX',
+    postalCode: '77036',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.7060,
+    longitude: -95.4975,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Houston', addressRegion: 'TX', addressCountry: 'US' },
+    { '@type': 'AdministrativeArea', name: 'Greater Houston Area' },
+    { '@type': 'State', name: 'Texas', addressCountry: 'US' },
+  ],
+  sameAs: [
+    'https://www.facebook.com/alexanderdisplay/',
+    'https://www.instagram.com/alexanderdisplay/',
+  ],
+  knowsAbout: [
+    'Vehicle Wraps', 'Fleet Graphics', 'Point of Purchase Displays',
+    'Folding Cartons', 'Custom Packaging', 'Banners', 'Signs',
+    'Marketing Kits', 'Protective Packaging', 'Wall Murals',
+    'Window Graphics', 'Canvas Printing', 'PVC Printing',
+    'Graphic Design', '3D Rendering', 'Fulfillment Services',
+  ],
+};
+
+const schemas = [localBusinessSchema, ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])];
 ---
 
 <!doctype html>
@@ -16,11 +79,42 @@ const { title, description = 'Alexander Display — Custom displays and visual s
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary meta -->
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alexander Display & Packaging" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Geo / local signals -->
+    <meta name="geo.region" content="US-TX" />
+    <meta name="geo.placename" content="Houston" />
+    <meta name="geo.position" content="29.7060;-95.4975" />
+    <meta name="ICBM" content="29.7060, -95.4975" />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title} | Alexander Display</title>
+
+    <!-- JSON-LD structured data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemas.length === 1 ? schemas[0] : schemas)} />
   </head>
   <body class="bg-white text-neutral-900 font-sans antialiased">
     <Nav />
