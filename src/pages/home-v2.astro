@@ -85,7 +85,7 @@ const products = [
   <div id="hero-driver" class="relative hidden lg:block" style={`height: calc(${heroImages.length} * 100vh)`}>
 
     <!-- Sticky panel — pins to viewport while driver scrolls past -->
-    <div class="sticky top-0 h-screen overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
+    <div class="sticky top-20 h-[calc(100vh-80px)] overflow-hidden" style="background: linear-gradient(135deg, #2d5200 0%, #4a8200 45%, #7BBD00 100%);">
 
       <!-- Background layers -->
       <div class="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(180,255,60,0.18) 0%, transparent 65%);"></div>
@@ -97,7 +97,7 @@ const products = [
       </svg>
 
       <!-- Content grid -->
-      <div class="h-full flex items-center pt-[35px] pb-8 relative z-10">
+      <div class="h-full flex items-center pt-8 pb-8 relative z-10">
         <div class="w-full max-w-6xl mx-auto px-6">
           <div class="grid grid-cols-[1fr_480px] gap-16 items-center">
 
